@@ -1,8 +1,8 @@
-package fr.n7.fut.model.equipe;
+package fr.n7.fut.model.teams;
 
-import fr.n7.fut.model.joueur.Player;
-import fr.n7.fut.model.joueur.Position;
-import fr.n7.fut.model.joueur.Role;
+import fr.n7.fut.model.players.Player;
+import fr.n7.fut.model.players.Position;
+import fr.n7.fut.model.players.Role;
 
 public class Titulaire {
 	private int collectif;

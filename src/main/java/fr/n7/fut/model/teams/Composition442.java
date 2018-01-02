@@ -1,7 +1,7 @@
-package fr.n7.fut.model.equipe;
+package fr.n7.fut.model.teams;
 
-public class Composition451 implements Composition {
-
+public class Composition442 implements Composition {
+	
 	private int collectif;
 	private Titulaire gk;
 	private Titulaire dd;
@@ -9,8 +9,11 @@ public class Composition451 implements Composition {
 	private Titulaire dcg;
 	private Titulaire dg;
 	private Titulaire md;
-	private Titulaire mdd;
-	private Titulaire mdg;
+	private Titulaire mcd;
+	private Titulaire mcg;
+	private Titulaire mg;
+	private Titulaire bud;
+	private Titulaire bug;
 
 	public int getCollectif() {
 		return collectif;
@@ -68,20 +71,20 @@ public class Composition451 implements Composition {
 		this.md = md;
 	}
 
-	public Titulaire getMdd() {
-		return mdd;
+	public Titulaire getMcd() {
+		return mcd;
 	}
 
-	public void setMdd(Titulaire mdd) {
-		this.mdd = mdd;
+	public void setMcd(Titulaire mcd) {
+		this.mcd = mcd;
 	}
 
-	public Titulaire getMdg() {
-		return mdg;
+	public Titulaire getMcg() {
+		return mcg;
 	}
 
-	public void setMdg(Titulaire mdg) {
-		this.mdg = mdg;
+	public void setMcg(Titulaire mcg) {
+		this.mcg = mcg;
 	}
 
 	public Titulaire getMg() {
@@ -92,29 +95,25 @@ public class Composition451 implements Composition {
 		this.mg = mg;
 	}
 
-	public Titulaire getMoc() {
-		return moc;
+	public Titulaire getBud() {
+		return bud;
 	}
 
-	public void setMoc(Titulaire moc) {
-		this.moc = moc;
+	public void setBud(Titulaire bud) {
+		this.bud = bud;
 	}
 
-	public Titulaire getBu() {
-		return bu;
+	public Titulaire getBug() {
+		return bug;
 	}
 
-	public void setBu(Titulaire bu) {
-		this.bu = bu;
+	public void setBug(Titulaire bug) {
+		this.bug = bug;
 	}
-
-	private Titulaire mg;
-	private Titulaire moc;
-	private Titulaire bu;
 
 	@Override
 	public int calculCollectif(Composition comp) {
-		// Not Yet Implemented
+		//Not Yet Implemented
 		return 0;
 	}
 

@@ -1,14 +1,10 @@
-package fr.n7.fut.model;
-
-import java.util.Set;
+package fr.n7.fut.model.users;
 
 import javax.persistence.*;
 
-import fr.n7.fut.model.Role;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.data.annotation.Transient;
 
 @Entity
 @Table(name = "user")

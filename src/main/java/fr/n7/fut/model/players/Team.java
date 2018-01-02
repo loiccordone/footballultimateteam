@@ -1,16 +1,17 @@
-package fr.n7.fut.model.joueur;
+package fr.n7.fut.model.players;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
-public class Nation {
+public class Team {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	private String nom;
+	@ManyToOne
+	private League championnat;
+	
 	public int getId() {
 		return id;
 	}
@@ -23,6 +24,11 @@ public class Nation {
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
-
+	public League getChampionnat() {
+		return championnat;
+	}
+	public void setChampionnat(League championnat) {
+		this.championnat = championnat;
+	}
 	
 }

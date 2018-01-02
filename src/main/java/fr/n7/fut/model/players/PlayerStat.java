@@ -1,4 +1,4 @@
-package fr.n7.fut.model.joueur;
+package fr.n7.fut.model.players;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

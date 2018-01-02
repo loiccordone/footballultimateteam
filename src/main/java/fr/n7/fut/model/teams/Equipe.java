@@ -1,6 +1,6 @@
-package fr.n7.fut.model.equipe;
+package fr.n7.fut.model.teams;
 
-import fr.n7.fut.model.joueur.Player;
+import fr.n7.fut.model.players.Player;
 
 public class Equipe {
 	private int collectif;

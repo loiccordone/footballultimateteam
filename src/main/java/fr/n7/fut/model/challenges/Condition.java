@@ -1,6 +1,6 @@
-package fr.n7.fut.model.sbc;
+package fr.n7.fut.model.challenges;
 
-import fr.n7.fut.model.equipe.Composition;
+import fr.n7.fut.model.teams.Composition;
 
 public abstract class Condition {
 	private String description;

@@ -2,8 +2,8 @@ package fr.n7.fut.model.packs;
 
 public class Pack {
 	private int price;
-	private TypePack type;
-	private FormatPack format;
+	private PackType type;
+	private PackFormat format;
 	
 	public int getPrice() {
 		return price;
@@ -11,16 +11,16 @@ public class Pack {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public TypePack getType() {
+	public PackType getType() {
 		return type;
 	}
-	public void setType(TypePack type) {
+	public void setType(PackType type) {
 		this.type = type;
 	}
-	public FormatPack getFormat() {
+	public PackFormat getFormat() {
 		return format;
 	}
-	public void setFormat(FormatPack format) {
+	public void setFormat(PackFormat format) {
 		this.format = format;
 	}
 	

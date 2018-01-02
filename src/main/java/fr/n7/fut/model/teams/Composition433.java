@@ -1,4 +1,4 @@
-package fr.n7.fut.model.equipe;
+package fr.n7.fut.model.teams;
 
 public class Composition433 implements Composition {
 	private int collectif;
