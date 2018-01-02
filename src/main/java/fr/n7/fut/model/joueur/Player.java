@@ -21,7 +21,22 @@ public class Player {
 	@OneToOne
 	private GKStat gstat;
 	private Position poste;
+	private Role role;
 	
+	public Role getRole() {
+		return role;
+	}
+	public void setRole(Role role) {
+		this.role = role;
+	}
+	private int price;
+	
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
 	public int getId() {
 		return id;
 	}
