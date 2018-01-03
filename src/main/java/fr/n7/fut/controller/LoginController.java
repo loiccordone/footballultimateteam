@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import fr.n7.fut.model.User;
+import fr.n7.fut.model.users.User;
 import fr.n7.fut.service.UserService;
 
 @Controller
@@ -20,6 +20,13 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
+    @RequestMapping(value={"/"}, method = RequestMethod.GET)
+    public ModelAndView index(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+        return modelAndView;
+    }
+
     @RequestMapping(value={"/access-denied"}, method = RequestMethod.GET)
     public ModelAndView accessDenied(){
         ModelAndView modelAndView = new ModelAndView();
@@ -27,7 +34,7 @@ public class LoginController {
         return modelAndView;
     }
 
-    @RequestMapping(value={"/", "/login"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");

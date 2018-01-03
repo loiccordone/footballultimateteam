@@ -1,6 +1,6 @@
 package fr.n7.fut.service;
 
-import fr.n7.fut.model.User;
+import fr.n7.fut.model.users.User;
 
 public interface UserService {
 

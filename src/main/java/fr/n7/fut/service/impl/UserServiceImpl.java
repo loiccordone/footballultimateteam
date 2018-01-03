@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import fr.n7.fut.model.Role;
-import fr.n7.fut.model.User;
+import fr.n7.fut.model.users.Role;
+import fr.n7.fut.model.users.User;
 import fr.n7.fut.repository.UserRepository;
 import fr.n7.fut.service.UserService;
 import org.springframework.transaction.annotation.Transactional;
