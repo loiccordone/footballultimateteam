@@ -1,8 +1,7 @@
 package fr.n7.fut.model.teams;
 
-public class Composition451 implements Composition {
+public class Composition451 extends Composition {
 
-	private int collectif;
 	private Titulaire gk;
 	private Titulaire dd;
 	private Titulaire dcd;
@@ -12,13 +11,6 @@ public class Composition451 implements Composition {
 	private Titulaire mdd;
 	private Titulaire mdg;
 
-	public int getCollectif() {
-		return collectif;
-	}
-
-	public void setCollectif(int collectif) {
-		this.collectif = collectif;
-	}
 
 	public Titulaire getGk() {
 		return gk;
@@ -113,7 +105,7 @@ public class Composition451 implements Composition {
 	private Titulaire bu;
 
 	@Override
-	public int calculCollectif(Composition comp) {
+	public int calculCollectif() {
 		// Not Yet Implemented
 		return 0;
 	}

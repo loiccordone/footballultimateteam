@@ -4,6 +4,11 @@ import fr.n7.fut.model.teams.Composition;
 
 public abstract class Condition {
 	private String description;
+	
+	public Condition(String description) {
+		super();
+		this.description = description;
+	}
 
 	public String getDescription() {
 		return description;
@@ -12,6 +17,7 @@ public abstract class Condition {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
 
 	public abstract boolean verifierCondition(Composition comp);
 }
