@@ -1,15 +1,13 @@
 package fr.n7.fut.model.players;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Team {
 	@Id
 	private int id;
 	private String nom;
-	@ManyToOne
+	@Enumerated(EnumType.STRING)
 	private League championnat;
 	
 	public int getId() {
