@@ -1,35 +1,82 @@
 package fr.n7.fut.model.challenges;
 
-import java.util.Iterator;
-import java.util.List;
-
+import fr.n7.fut.model.players.FootballTeam;
+import fr.n7.fut.model.players.League;
+import fr.n7.fut.model.players.Nation;
 import fr.n7.fut.model.teams.Composition;
+import javafx.util.Pair;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "challenges")
 public class Challenge {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_challenge")
+	private int id;
+
+	@Enumerated(EnumType.STRING)
 	private Composition comp;
-	private List<Condition> conditions;
+
+	@Column(name = "chemistryNeeded")
+	private int chemistryNeeded;
+
+	@Column(name = "nbPlayersSameNation")
+	private Pair<Integer,Nation> nbPlayersSameNation;
+
+	@Column(name = "nbPlayersSameLeague")
+	private Pair<Integer,League> nbPlayersSameLeague;
+
+	@Column(name = "nbPlayersSameTeam")
+	private Pair<Integer,FootballTeam> nbPlayersSameTeam;
 	
 	public Composition getComp() {
 		return comp;
 	}
+
 	public void setComp(Composition comp) {
 		this.comp = comp;
 	}
-	public List<Condition> getConditions() {
-		return conditions;
+
+	public int getId() {
+		return id;
 	}
-	public void setConditions(List<Condition> conditions) {
-		this.conditions = conditions;
+
+	public void setId(int id) {
+		this.id = id;
 	}
-	
-	public boolean verifierChallenge() {
-		boolean res = true;
-		Iterator<Condition> icond = this.conditions.iterator();
-		Condition condactu;
-		while (icond.hasNext()) {
-			condactu = icond.next();
-			res = res && condactu.verifierCondition(this.comp);
-		}
-		return res;
+
+	public int getChemistryNeeded() {
+		return chemistryNeeded;
+	}
+
+	public void setChemistryNeeded(int chemistryNeeded) {
+		this.chemistryNeeded = chemistryNeeded;
+	}
+
+	public Pair<Integer, Nation> getNbPlayersSameNation() {
+		return nbPlayersSameNation;
+	}
+
+	public void setNbPlayersSameNation(Pair<Integer, Nation> nbPlayersSameNation) {
+		this.nbPlayersSameNation = nbPlayersSameNation;
+	}
+
+	public Pair<Integer, League> getNbPlayersSameLeague() {
+		return nbPlayersSameLeague;
+	}
+
+	public void setNbPlayersSameLeague(Pair<Integer, League> nbPlayersSameLeague) {
+		this.nbPlayersSameLeague = nbPlayersSameLeague;
+	}
+
+	public Pair<Integer, FootballTeam> getNbPlayersSameTeam() {
+		return nbPlayersSameTeam;
+	}
+
+	public void setNbPlayersSameTeam(Pair<Integer, FootballTeam> nbPlayersSameTeam) {
+		this.nbPlayersSameTeam = nbPlayersSameTeam;
 	}
 }

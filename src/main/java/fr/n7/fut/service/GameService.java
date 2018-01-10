@@ -1,5 +1,5 @@
 package fr.n7.fut.service;
 
-public class GameService {
+public interface GameService {
 
 }

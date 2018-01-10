@@ -1,23 +1,26 @@
 package fr.n7.fut.model.players;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+
 @Entity
+@Table(name = "player_stats")
 public class PlayerStat {
 	@Id
-	private int id_player;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_player_stat")
+	private int id;
 	private int pace;
 	private int shooting;
 	private int passing;
 	private int dribbling;
 	private int defending;
 	private int physicality;
-	
-	public int getId_player() {
-		return id_player;
+
+	public int getId() {
+		return id;
 	}
-	public void setId_player(int id_player) {
-		this.id_player = id_player;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public int getPace() {
 		return pace;

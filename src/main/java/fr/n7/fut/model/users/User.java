@@ -2,42 +2,73 @@ package fr.n7.fut.model.users;
 
 import javax.persistence.*;
 
+import fr.n7.fut.model.players.Player;
+import fr.n7.fut.model.teams.Team;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import java.util.List;
+
 @Entity
-@Table(name = "user")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "user_id")
+    @Column(name = "id_user")
     private int id;
 
     @Column(name = "email")
-    @Email(message = "*Please provide a valid Email")
-    @NotEmpty(message = "*Please provide an email")
+    @Email(message = "L'email n'est pas de forme valide")
+    @NotEmpty(message = "L'email ne doit pas être vide")
     private String email;
 
     @Column(name = "password")
-    @Length(min = 5, message = "*Your password must have at least 5 characters")
-    @NotEmpty(message = "*Please provide your password")
+    @Length(min = 5, message = "Le mot de passe doit faire au moins 5 caractères")
+    @NotEmpty(message = "Le mot de passe ne doit pas être vide")
     private String password;
-
-    @Column(name = "name")
-    @NotEmpty(message = "*Please provide your name")
-    private String name;
-
-    @Column(name = "last_name")
-    @NotEmpty(message = "*Please provide your last name")
-    private String lastName;
 
     @Column(name = "active")
     private boolean active;
 
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
+
+    @OneToMany
+    @Column(name = "club_players")
+    private List<Player> players;
+
+    @OneToOne
+    @Column(name = "active_team")
+    private Team activeTeam;
+
+    @OneToOne
+    private Record record;
+
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
+    }
+
+    public List<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(List<Player> players) {
+        this.players = players;
+    }
+
+    public Team getActiveTeam() {
+        return activeTeam;
+    }
+
+    public void setActiveTeam(Team activeTeam) {
+        this.activeTeam = activeTeam;
+    }
 
     public int getId() {
         return id;
@@ -53,22 +84,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public String getEmail() {

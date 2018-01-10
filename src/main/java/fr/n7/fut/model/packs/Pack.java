@@ -1,9 +1,22 @@
 package fr.n7.fut.model.packs;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name="packs")
 public class Pack {
-	private int price;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_pack")
+	private int id;
+
+	@Enumerated(EnumType.STRING)
 	private PackType type;
+
+	@Enumerated(EnumType.STRING)
 	private PackFormat format;
+
+	private int price;
 	
 	public int getPrice() {
 		return price;

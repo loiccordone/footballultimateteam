@@ -3,10 +3,14 @@ package fr.n7.fut.model.players;
 import javax.persistence.*;
 
 @Entity
-public class Team {
+@Table(name = "football_teams")
+public class FootballTeam {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id_football_team")
 	private int id;
 	private String nom;
+
 	@Enumerated(EnumType.STRING)
 	private League championnat;
 	

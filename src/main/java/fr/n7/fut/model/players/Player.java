@@ -1,35 +1,42 @@
 package fr.n7.fut.model.players;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "players")
 public class Player {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name = "id_player")
 	private int id;
+
 	private String nom;
 	private String prenom;
+
 	@ManyToOne
-	private Team equipe;
+	private FootballTeam equipe;
+
 	@OneToOne
 	private PlayerStat pstat;
+
 	@OneToOne
 	private GKStat gstat;
-	private Position poste;
-	private Role role;
-	
-	public Role getRole() {
-		return role;
-	}
-	public void setRole(Role role) {
-		this.role = role;
-	}
+
+	@Enumerated(EnumType.STRING)
+	private Position position;
+
+	@Enumerated(EnumType.STRING)
+	private FieldRole fieldRole;
+
 	private int price;
+	private int globalNote;
+	
+	public FieldRole getFieldRole() {
+		return fieldRole;
+	}
+	public void setFieldRole(FieldRole fieldRole) {
+		this.fieldRole = fieldRole;
+	}
 	
 	public int getPrice() {
 		return price;
@@ -56,10 +63,10 @@ public class Player {
 		this.prenom = prenom;
 	}
 
-	public Team getEquipe() {
+	public FootballTeam getEquipe() {
 		return equipe;
 	}
-	public void setEquipe(Team equipe) {
+	public void setEquipe(FootballTeam equipe) {
 		this.equipe = equipe;
 	}
 	public PlayerStat getPstat() {
@@ -74,11 +81,16 @@ public class Player {
 	public void setGstat(GKStat gstat) {
 		this.gstat = gstat;
 	}
-	public Position getPoste() {
-		return poste;
+	public Position getPosition() {
+		return position;
 	}
-	public void setPoste(Position poste) {
-		this.poste = poste;
+	public void setPosition(Position position) {
+		this.position = position;
 	}
-	
+	public int getGlobalNote() {
+		return globalNote;
+	}
+	public void setGlobalNote(int globalNote) {
+		this.globalNote = globalNote;
+	}
 }
