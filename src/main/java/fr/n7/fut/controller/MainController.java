@@ -15,12 +15,12 @@ import fr.n7.fut.model.users.User;
 import fr.n7.fut.service.UserService;
 
 @Controller
-public class LoginController {
+public class MainController {
 
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value={"/"}, method = RequestMethod.GET)
+    @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
@@ -79,6 +79,13 @@ public class LoginController {
         modelAndView.addObject("userName", "Welcome " + user.getName() + " " + user.getLastName() + " (" + user.getEmail() + ")");
         modelAndView.addObject("adminMessage","Content Available Only for Users with Admin Role");
         modelAndView.setViewName("admin/home");
+        return modelAndView;
+    }
+
+    @RequestMapping(value="/dashboard", method= RequestMethod.GET)
+    public ModelAndView dashboard() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("dashboard");
         return modelAndView;
     }
 
