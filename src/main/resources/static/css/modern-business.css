@@ -10,7 +10,9 @@ body {
 
 @media (min-width: 992px) {
   body {
-    padding-top: 56px;
+    background:url(../../assets/img/pexels-photo-294560.jpeg) no-repeat;
+    padding-top:100px;
+    background-size:cover;
   }
 }
 

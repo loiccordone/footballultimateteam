@@ -40,7 +40,6 @@ public class User {
     private List<Player> players;
 
     @OneToOne
-    @Column(name = "active_team")
     private Team activeTeam;
 
     @OneToOne

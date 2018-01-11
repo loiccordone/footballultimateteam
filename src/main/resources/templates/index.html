@@ -22,7 +22,36 @@
     <nav th:replace="fragments/header :: header"></nav>
 
     <!-- Carousel -->
-    <header th:replace="fragments/carousel :: carousel"></header>
+    <!-- <header th:replace="fragments/carousel :: carousel"></header> -->
+
+    <!-- Barre de recherche -->
+    <div class="container" style="background-image: url(https://i.eurosport.com/2014/10/16/1333037-28654369-2560-1440.jpg); background-size: cover" >
+        <div class="row" style="height:250px;">
+        </div>
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input type="text" class="  search-query form-control" placeholder="Rechercher un joueur, un club, un autre participant... " />
+                        <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="height:150px;">
+        </div>
+        <div class="offset-lg-5 col-lg-2">
+            <a href="#" class="btn btn-primary btn-large">Jouer <i class="fam-sport-soccer"></i></a>
+        </div>
+        <div class="row" style="height:150px;">
+        </div>
+    </div>
+
+
 
     <!-- Page Content -->
     <div class="container">
