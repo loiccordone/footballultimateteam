@@ -1,5 +1,13 @@
 package fr.n7.fut.service;
 
-public interface PackService {
+import java.util.List;
 
+import fr.n7.fut.model.packs.Pack;
+import fr.n7.fut.model.packs.PackFormat;
+import fr.n7.fut.model.packs.PackType;
+import fr.n7.fut.model.players.Player;
+
+public interface PackService {
+	Pack generatePack(PackType type, PackFormat format );
+	List<Player> openPack(PackType type, PackFormat format);
 }

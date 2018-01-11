@@ -30,7 +30,14 @@ public class Player {
 
 	private int price;
 	private int globalNote;
+	private Quality quality;
 	
+	public Quality getQuality() {
+		return quality;
+	}
+	public void setQuality(Quality quality) {
+		this.quality = quality;
+	}
 	public FieldRole getFieldRole() {
 		return fieldRole;
 	}
