@@ -15,7 +15,8 @@ public class Player {
 
 	@ManyToOne
 	private FootballTeam equipe;
-
+	@ManyToOne
+	private Nation nation;
 	@OneToOne
 	private PlayerStat pstat;
 
@@ -100,4 +101,11 @@ public class Player {
 	public void setGlobalNote(int globalNote) {
 		this.globalNote = globalNote;
 	}
+	public Nation getNation() {
+		return nation;
+	}
+	public void setNation(Nation nation) {
+		this.nation = nation;
+	}
+	
 }

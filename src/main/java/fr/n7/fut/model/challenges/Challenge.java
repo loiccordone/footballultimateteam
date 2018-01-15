@@ -1,12 +1,19 @@
 package fr.n7.fut.model.challenges;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import fr.n7.fut.model.players.FootballTeam;
 import fr.n7.fut.model.players.League;
 import fr.n7.fut.model.players.Nation;
 import fr.n7.fut.model.teams.Composition;
 import javafx.util.Pair;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name = "challenges")

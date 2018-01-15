@@ -1,10 +1,19 @@
 package fr.n7.fut.model.games;
 
-import fr.n7.fut.model.users.User;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 import org.springframework.data.annotation.CreatedDate;
 
-import javax.persistence.*;
-import java.util.Date;
+import fr.n7.fut.model.teams.Team;
+import fr.n7.fut.model.users.User;
 
 @Entity
 @Table(name = "games")
@@ -75,5 +84,23 @@ public class Game {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+	
+	public void computeScore() {
+		Team hometeam = homePlayer.getActiveTeam();
+		Team awayteam = awayPlayer.getActiveTeam();
+		
+		for (int i = 0; i<5; i++) {
+			this.scoreHomePlayer = this.scoreHomePlayer + computeAttack(hometeam,awayteam);
+			this.scoreAwayPlayer = this.scoreAwayPlayer + computeAttack(awayteam,hometeam);
+		}
+	}
+	
+	public int computeAttack (Team attacking, Team defending) {
+		int attChemistry = attacking.getCollectif();
+		int defChemistry = defending.getCollectif();
+		
+		//To do
+		return 0;
 	}
 }

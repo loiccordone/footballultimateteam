@@ -14,11 +14,11 @@ import fr.n7.fut.model.players.Quality;
 
 public interface PlayerRepository extends CrudRepository<Player, Long> {
 	Player findPlayerById(int id);
-	List<Player> findPlayerByFieldRole(FieldRole role);
-	List<Player> findPlayerByPosition(Position position);
-	List<Player> findPlayerByFootballTeam(FootballTeam team);
-	List<Player> findPlayerByNation(Nation nation);
-	List<Player> findPlayerByLeague(League league);
-	List<Player> findPlayerByQuality(Quality quality);
+	List<Player> findPlayersByFieldRole(FieldRole role);
+	List<Player> findPlayersByPosition(Position position);
+	List<Player> findPlayersByFootballTeam(FootballTeam team);
+	List<Player> findPlayersByNation(Nation nation);
+	List<Player> findPlayersByLeague(League league);
+	List<Player> findPlayersByQuality(Quality quality);
 	
 }

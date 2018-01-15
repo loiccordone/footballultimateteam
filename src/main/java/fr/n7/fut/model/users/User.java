@@ -44,8 +44,17 @@ public class User {
 
     @OneToOne
     private Record record;
+    private int coins;
 
-    public Record getRecord() {
+    public int getCoins() {
+		return coins;
+	}
+
+	public void setCoins(int coins) {
+		this.coins = coins;
+	}
+
+	public Record getRecord() {
         return record;
     }
 
