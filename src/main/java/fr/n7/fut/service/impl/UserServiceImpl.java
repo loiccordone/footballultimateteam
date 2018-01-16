@@ -2,6 +2,7 @@ package fr.n7.fut.service.impl;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.n7.fut.model.games.Game;
 import fr.n7.fut.model.packs.PackFormat;
 import fr.n7.fut.model.packs.PackType;
 import fr.n7.fut.model.players.Player;
@@ -134,9 +136,27 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 	@Override
 	public void playGame(int idGamer) {
-		//TO DO
+		User homeplayer = userRepository.findById(idGamer);
+		/*Look for a different  awayplayer with a valid team*/
+		User awayplayer = getUserForaGame(idGamer);	
+		Game game = new Game(homeplayer,awayplayer);
+		game.computeScore();
+		homeplayer.majRecord(game);
 	}
-
+	
+	public User getUserForaGame(int idGamer) {
+		List<User> us = userRepository.findAll();
+		boolean validChoice = false;
+		User res = null;
+		Random rd = new Random();
+		while (!validChoice) {
+			res = us.get(rd.nextInt(us.size()));
+			if (res.getId() != idGamer && res.getActiveTeam().isPlayable()) {
+				validChoice = true;
+			}
+		}
+		return res;
+	}
 	@Override
 	public void replacePlayer(int idGamer, int choiceStarter, int choiceSub) {
 		User user = userRepository.findById(idGamer);

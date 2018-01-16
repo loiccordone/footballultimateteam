@@ -1,6 +1,6 @@
 package fr.n7.fut.model.games;
 
-import java.util.Date;
+import java.util.Map;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedDate;
-
+import fr.n7.fut.model.players.FieldRole;
+import fr.n7.fut.model.teams.Starter;
 import fr.n7.fut.model.teams.Team;
 import fr.n7.fut.model.users.User;
 
@@ -35,10 +35,7 @@ public class Game {
 	@Column(name = "score_away_player")
 	private int scoreAwayPlayer;
 
-	@CreatedDate
-	private Date date;
-
-	public User getHomePlayer() {
+ User getHomePlayer() {
 		return homePlayer;
 	}
 
@@ -78,29 +75,57 @@ public class Game {
 		this.scoreAwayPlayer = scoreAwayPlayer;
 	}
 
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-	
 	public void computeScore() {
 		Team hometeam = homePlayer.getActiveTeam();
 		Team awayteam = awayPlayer.getActiveTeam();
-		
-		for (int i = 0; i<5; i++) {
-			this.scoreHomePlayer = this.scoreHomePlayer + computeAttack(hometeam,awayteam);
-			this.scoreAwayPlayer = this.scoreAwayPlayer + computeAttack(awayteam,hometeam);
+
+		for (int i = 0; i < 5; i++) {
+			this.scoreHomePlayer = this.scoreHomePlayer + computeAttack(hometeam, awayteam);
+			this.scoreAwayPlayer = this.scoreAwayPlayer + computeAttack(awayteam, hometeam);
 		}
 	}
-	
-	public int computeAttack (Team attacking, Team defending) {
+
+	public int computeAttack(Team attacking, Team defending) {
+		int res = 0;
 		int attChemistry = attacking.getCollectif();
 		int defChemistry = defending.getCollectif();
-		
-		//To do
-		return 0;
+
+		Map<Integer, Starter> attackingStarter = attacking.getStarters();
+		Map<Integer, Starter> defendingStarter = defending.getStarters();
+
+		/* Compute the avg rating of the attack and the defense */
+		int attRating = 0;
+		int nbAtt = 0;
+		int defRating = 0;
+		int nbDef = 0;
+		for (Starter st : attackingStarter.values()) {
+			if (st.getFieldRole().equals(FieldRole.MIL) || st.getFieldRole().equals(FieldRole.ATT)) {
+				attRating = attRating + st.getJoueur().getGlobalNote();
+				nbAtt++;
+			}
+		}
+
+		for (Starter st : defendingStarter.values()) {
+			if (st.getFieldRole().equals(FieldRole.DEF) || st.getFieldRole().equals(FieldRole.GK)) {
+				defRating = defRating + st.getJoueur().getGlobalNote();
+				nbDef++;
+			}
+		}
+
+		attRating = attRating / nbAtt * attChemistry / 100;
+		defRating = defRating / nbDef * defChemistry / 100;
+
+		if (attRating > defRating) {
+			res = 1;
+		}
+
+		return res;
 	}
+
+	public Game(User homePlayer, User awayPlayer) {
+		super();
+		this.homePlayer = homePlayer;
+		this.awayPlayer = awayPlayer;
+	}
+	
 }

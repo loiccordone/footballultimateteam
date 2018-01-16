@@ -2,6 +2,7 @@ package fr.n7.fut.model.users;
 
 import javax.persistence.*;
 
+import fr.n7.fut.model.games.Game;
 import fr.n7.fut.model.players.Player;
 import fr.n7.fut.model.teams.Team;
 import org.hibernate.validator.constraints.Email;
@@ -117,4 +118,8 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
+    
+	public void majRecord(Game game) {
+		this.getRecord().majRecord(game);
+	}
 }

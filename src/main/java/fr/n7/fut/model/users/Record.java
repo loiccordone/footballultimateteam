@@ -2,6 +2,8 @@ package fr.n7.fut.model.users;
 
 import javax.persistence.*;
 
+import fr.n7.fut.model.games.Game;
+
 @Entity
 @Table(name = "records")
 public class Record {
@@ -46,5 +48,17 @@ public class Record {
 	}
 	public void setGoalsTaken(int goalsTaken) {
 		this.goalsTaken = goalsTaken;
+	}
+	public void majRecord(Game game) {
+		this.setGoalsScored(this.getGoalsScored()+game.getScoreHomePlayer());
+		this.setGoalsTaken(this.getGoalsTaken()+game.getScoreAwayPlayer());
+		if (game.getScoreAwayPlayer() < game.getScoreHomePlayer()) {
+			this.setWins(this.getWins()+1);
+		} else if (game.getScoreAwayPlayer() > game.getScoreHomePlayer()) {
+			this.setLosses(this.getLosses()+1);
+		} else {
+			this.setDraws(this.getDraws()+1);
+		}
+		
 	}
 }
