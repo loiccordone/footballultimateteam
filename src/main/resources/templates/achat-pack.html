@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Achat packs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" type="text/css" th:href="@{vendor/bootstrap/css/bootstrap.min.css}" />
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" type="text/css" th:href="@{css/modern-business.css}" />
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav th:replace="fragments/header :: header"></nav>
+
+    <!-- Page Content -->
+    <div class="container">
+        <!-- Portfolio Section -->
+        <h2>Achat de pack de joueurs</h2>
+
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 portfolio-item centered">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top img-responsive" th:src="@{/images/bronze.png}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">
+                            <a href="#">Pack Bronze</a>
+                        </h4>
+                        <p class="card-text">Pack comportant les joueurs de plus faible qualité à savoir les joueurs Bronze. </p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-primary text-center">Normal (12 j.) : 500 crédits </a>
+                        <div class="row" style="height:5px;"></div>
+                        <a href="#" class="btn btn-primary">Méga (24 j.) : 950 crédits </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top img-responsive" th:src="@{/images/argent.png}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Pack Argent</a>
+                        </h4>
+                        <p class="card-text">Pack comportant les joueurs de plus faible qualité à savoir les joueurs Argent.</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-primary">Acheter (12 j.) : 1000 crédits</a>
+                        <div class="row" style="height:5px;"></div>
+                        <a href="#" class="btn btn-primary">Méga (24 j.) : 1900 crédits </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top img-responsive" th:src="@{/images/or.png}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Pack Or</a>
+                        </h4>
+                        <p class="card-text">Pack comportant les joueurs de plus faible qualité à savoir les joueurs Or.</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-primary">Acheter (12 j.) : 1500 crédits</a>
+                        <div class="row" style="height:5px;"></div>
+                        <a href="#" class="btn btn-primary">Méga (24 j.) : 2900 crédits </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 portfolio-item">
+                <div class="card h-100">
+                    <a href="#"><img class="card-img-top img-responsive" th:src="@{/images/on-fire.png}" alt=""></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="#">Pack OnFire</a>
+                        </h4>
+                        <p class="card-text">Pack comportant les joueurs de plus faible qualité à savoir les joueurs OnFire.</p>
+                    </div>
+                    <div class="card-footer text-center">
+                        <a href="#" class="btn btn-primary">Acheter (12 j.) : 10000 crédits </a>
+                        <div class="row" style="height:5px;"></div>
+                        <a href="#" class="btn btn-primary">Méga (24 j.) : 19500 crédits </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer th:replace="fragments/footer :: footer">
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script th:src="@{vendor/jquery/jquery.min.js}"></script>
+    <script th:src="@{vendor/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+</body>
+</html>

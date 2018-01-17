@@ -18,7 +18,6 @@ public interface PlayerRepository extends CrudRepository<Player, Long> {
 	List<Player> findPlayersByPosition(Position position);
 	List<Player> findPlayersByFootballTeam(FootballTeam team);
 	List<Player> findPlayersByNation(Nation nation);
-	List<Player> findPlayersByLeague(League league);
 	List<Player> findPlayersByQuality(Quality quality);
 	
 }

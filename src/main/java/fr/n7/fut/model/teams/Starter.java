@@ -90,9 +90,9 @@ public class Starter {
 	
 	public int computeChemistryNeighbor(Player neighbor)  {
 		int res = 0;
-		if (this.getJoueur().getEquipe().getChampionnat().equals(neighbor.getEquipe().getChampionnat())) {
+		if (this.getJoueur().getFootballTeam().getChampionnat().equals(neighbor.getFootballTeam().getChampionnat())) {
 			res++;
-			if (this.getJoueur().getEquipe().equals(neighbor.getEquipe())) {
+			if (this.getJoueur().getFootballTeam().equals(neighbor.getFootballTeam())) {
 				res = res + 2;
 			}
 		}

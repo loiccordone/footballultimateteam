@@ -2,15 +2,7 @@ package fr.n7.fut.model.teams;
 
 import java.util.Map;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import fr.n7.fut.model.players.Player;
 
@@ -26,10 +18,15 @@ public class Team {
 
 	@Enumerated(EnumType.STRING)
 	private Composition comp;
-	
-	@OneToMany
+
+	@ElementCollection
+	@CollectionTable(name="team_starters")
+	@MapKeyColumn(name="team_starters_position")
 	private Map<Integer,Starter> starters;
-	@OneToMany
+
+	@ElementCollection
+	@CollectionTable(name="team_subs")
+	@MapKeyColumn(name="team_subs_position")
 	private Map<Integer,Player> subs;
 
 	public int getCollectif() {

@@ -14,8 +14,9 @@ public class Player {
 	private String prenom;
 
 	@ManyToOne
-	private FootballTeam equipe;
-	@ManyToOne
+	private FootballTeam footballTeam;
+
+	@Enumerated(EnumType.STRING)
 	private Nation nation;
 	@OneToOne
 	private PlayerStat pstat;
@@ -71,11 +72,11 @@ public class Player {
 		this.prenom = prenom;
 	}
 
-	public FootballTeam getEquipe() {
-		return equipe;
+	public FootballTeam getFootballTeam() {
+		return footballTeam;
 	}
-	public void setEquipe(FootballTeam equipe) {
-		this.equipe = equipe;
+	public void setFootballTeam(FootballTeam footballTeam) {
+		this.footballTeam = footballTeam;
 	}
 	public PlayerStat getPstat() {
 		return pstat;

@@ -27,6 +27,48 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/achat-pack"}, method = RequestMethod.GET)
+    public ModelAndView achatpack(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("achat-pack");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/profil"}, method = RequestMethod.GET)
+    public ModelAndView profil(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("profil");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/joueur"}, method = RequestMethod.GET)
+    public ModelAndView joueur(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("joueur");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/resultat-match"}, method = RequestMethod.GET)
+    public ModelAndView resultatmatch(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("resultat-match");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/preparation-match"}, method = RequestMethod.GET)
+    public ModelAndView preparationmatch(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("preparation-match");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/gestion-equipe"}, method = RequestMethod.GET)
+    public ModelAndView gestionequipe(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("gestion-equipe");
+        return modelAndView;
+    }
+
     @RequestMapping(value={"/access-denied"}, method = RequestMethod.GET)
     public ModelAndView accessDenied(){
         ModelAndView modelAndView = new ModelAndView();

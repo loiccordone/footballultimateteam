@@ -11,10 +11,10 @@ public class Pack {
 	private int id;
 
 	@Enumerated(EnumType.STRING)
-	private PackType type;
+	private PackType packType;
 
 	@Enumerated(EnumType.STRING)
-	private PackFormat format;
+	private PackFormat packFormat;
 
 	private int price;
 	
@@ -24,17 +24,17 @@ public class Pack {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public PackType getType() {
-		return type;
+	public PackType getPackType() {
+		return packType;
 	}
-	public void setType(PackType type) {
-		this.type = type;
+	public void setPackType(PackType packType) {
+		this.packType = packType;
 	}
-	public PackFormat getFormat() {
-		return format;
+	public PackFormat getPackFormat() {
+		return packFormat;
 	}
-	public void setFormat(PackFormat format) {
-		this.format = format;
+	public void setPackFormat(PackFormat packFormat) {
+		this.packFormat = packFormat;
 	}
 	
 	
