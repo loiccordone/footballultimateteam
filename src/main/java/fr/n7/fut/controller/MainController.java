@@ -2,7 +2,9 @@ package fr.n7.fut.controller;
 
 import javax.validation.Valid;
 
+import fr.n7.fut.model.players.Player;
 import fr.n7.fut.model.teams.Team;
+import fr.n7.fut.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +17,14 @@ import org.springframework.web.servlet.ModelAndView;
 import fr.n7.fut.model.users.User;
 import fr.n7.fut.service.UserService;
 
+import java.util.List;
+
 @Controller
 public class MainController {
 
     @Autowired
     private UserService userService;
+    private PlayerService playerService;
 
     @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
     public ModelAndView index(){
@@ -58,6 +63,18 @@ public class MainController {
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("user",user);
         modelAndView.setViewName("joueur");
+        return modelAndView;
+    }
+
+    @RequestMapping(value={"/tableau-joueurs"}, method = RequestMethod.GET)
+    public ModelAndView tableaujoueurs(){
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
+        List<Player> listeJoueurs = playerService.getAll();
+        modelAndView.addObject("listeJoueurs",listeJoueurs);
+        modelAndView.setViewName("tableau-joueurs");
         return modelAndView;
     }
 
