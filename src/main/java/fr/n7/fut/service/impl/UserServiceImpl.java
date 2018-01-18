@@ -141,7 +141,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		User awayplayer = getUserForaGame(idGamer);	
 		Game game = new Game(homeplayer,awayplayer);
 		game.computeScore();
-		homeplayer.majRecord(game);
 	}
 	
 	public User getUserForaGame(int idGamer) {

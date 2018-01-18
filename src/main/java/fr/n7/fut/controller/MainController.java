@@ -23,6 +23,9 @@ public class MainController {
     @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("index");
         return modelAndView;
     }
@@ -30,6 +33,9 @@ public class MainController {
     @RequestMapping(value={"/achat-pack"}, method = RequestMethod.GET)
     public ModelAndView achatpack(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("achat-pack");
         return modelAndView;
     }
@@ -37,6 +43,9 @@ public class MainController {
     @RequestMapping(value={"/profil"}, method = RequestMethod.GET)
     public ModelAndView profil(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("profil");
         return modelAndView;
     }
@@ -44,6 +53,9 @@ public class MainController {
     @RequestMapping(value={"/joueur"}, method = RequestMethod.GET)
     public ModelAndView joueur(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("joueur");
         return modelAndView;
     }
@@ -51,6 +63,9 @@ public class MainController {
     @RequestMapping(value={"/resultat-match"}, method = RequestMethod.GET)
     public ModelAndView resultatmatch(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("resultat-match");
         return modelAndView;
     }
@@ -58,6 +73,9 @@ public class MainController {
     @RequestMapping(value={"/preparation-match"}, method = RequestMethod.GET)
     public ModelAndView preparationmatch(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("preparation-match");
         return modelAndView;
     }
@@ -65,6 +83,9 @@ public class MainController {
     @RequestMapping(value={"/gestion-equipe"}, method = RequestMethod.GET)
     public ModelAndView gestionequipe(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("gestion-equipe");
         return modelAndView;
     }
@@ -72,6 +93,9 @@ public class MainController {
     @RequestMapping(value={"/access-denied"}, method = RequestMethod.GET)
     public ModelAndView accessDenied(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("access-denied");
         return modelAndView;
     }
@@ -79,6 +103,9 @@ public class MainController {
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("login");
         return modelAndView;
     }
@@ -99,15 +126,15 @@ public class MainController {
         if (userExists != null) {
             bindingResult
                     .rejectValue("email", "error.user",
-                            "There is already a user registered with the email provided");
+                            "Il y a déjà un utilisateur inscrit avec cette adresse email");
         }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
             userService.saveUser(user);
-            modelAndView.addObject("successMessage", "User has been registered successfully");
+            modelAndView.addObject("successMessage", "L'utilisateur a été enregistré ! Connectez-vous !");
             modelAndView.addObject("user", new User());
-            modelAndView.setViewName("registration");
+            modelAndView.setViewName("login");
 
         }
         return modelAndView;
@@ -127,6 +154,9 @@ public class MainController {
     @RequestMapping(value="/dashboard", method= RequestMethod.GET)
     public ModelAndView dashboard() {
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("dashboard");
         return modelAndView;
     }
@@ -134,6 +164,9 @@ public class MainController {
     @RequestMapping(value={"/composition"}, method = RequestMethod.GET)
     public ModelAndView composition(){
         ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        modelAndView.addObject("user",user);
         modelAndView.setViewName("composition");
         return modelAndView;
         

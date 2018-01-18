@@ -20,22 +20,25 @@
     <div class="container">
         <!-- Features Section -->
         <div class="row">
-            <div class="col-lg-6">
-                <h2>Mon profil</h2>
-                <ul>
-                    <li>
-                        <strong>Lien Pseudo</strong>
-                    </li>
-                    <li>Lien %  victoire</li>
-                    <li>Lien NbParties</li>
-                    <li>Working contact form with validation</li>
-                    <li>Unstyled page elements for easy customization</li>
-                </ul>
-                <a href="/composition.html" class="btn btn-info" role="button">Modifier mon equipe</a>
-            </div>
-            <div class="col-lg-6">
-                <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
-            </div>
+
+                <div class="col-lg-6">
+                    <h2>Mon profil</h2>
+                    <ul>
+                        <li>Pseudo : <strong th:utext="${user.pseudo}">Pseudo</strong></li>
+                        <li>Nombre de matchs joués : <span th:text="${user.matchsJoues}">Nb parties</span></li>
+                        <li>Nombre de victoires : <span th:text="${user.matchsGagnes}">Nb victoires</span></li>
+                        <li>Pourcentage de victoires : <span th:text="${user.matchsGagnes != 0} ? ${user.matchsJoues} / ${user.matchsGagnes} : '0.0%'">%  victoires</span></li>
+                        <li>Nombre de buts marqués/encaissés : <span th:text="${user.butMarques}">Nb victoires</span>/<span th:text="${user.butEncaisses}">Nb victoires</span></li>
+                    </ul>
+                    <a href="/composition.html" th:href="@{composition}" class="btn btn-info" role="button">Modifier mon equipe</a>
+                    <a href="/logout.html" th:href="@{logout}" class="btn btn-danger" role="button">Se déconnecter</a>
+                </div>
+        <div class="col-lg-6">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Mes joueurs</a></li>
+                <li><a href="#">Mes packs</a></li>
+            </ul>
+        </div>
         </div>
         <!-- /.row -->
     </div>
