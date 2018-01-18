@@ -24,6 +24,8 @@ public class MainController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
     private PlayerService playerService;
 
     @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
@@ -72,7 +74,7 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("user",user);
-        List<Player> listeJoueurs = playerService.getAll();
+        Iterable<Player> listeJoueurs = playerService.getAll();
         modelAndView.addObject("listeJoueurs",listeJoueurs);
         modelAndView.setViewName("tableau-joueurs");
         return modelAndView;

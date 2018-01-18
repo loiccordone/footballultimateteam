@@ -72,9 +72,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
 	@Override
-	public void buyPlayer(int idGamer, int idplayer) {
+	public void buyPlayer(User user, int idplayer) {
 		Player tobuy = playerRepository.findPlayerById(idplayer);
-		User buyer = userRepository.findById(idGamer);
+		User buyer = user;
 		/*Add the player to user's club*/
 		List<Player> club = buyer.getPlayers();
 		club.add(tobuy);
@@ -84,9 +84,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public void sellPlayer(int idGamer, int idplayer) {
+	public void sellPlayer(User user, int idplayer) {
 		Player toSell = playerRepository.findPlayerById(idplayer);
-		User seller = userRepository.findById(idGamer);
+		User seller = user;
 		/*Remove the player from  user's club*/
 		List<Player> club = seller.getPlayers();
 		club.remove(toSell);
@@ -98,13 +98,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
 
 	@Override
-	public void openPack(int idGamer, PackFormat format, PackType type) {
-		User user = userRepository.findById(idGamer);
+	public void openPack(User user, PackFormat format, PackType type) {
 		List<Player> result = packService.openPack(type, format);
 		List<Player> club = user.getPlayers();
 		for (Player pl : result ) {
 			if (club.contains(pl)) {
-				sellPlayer(idGamer,pl.getId());
+				sellPlayer(user,pl.getId());
 			} else {
 				club.add(pl);
 			}
@@ -113,52 +112,48 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
-	public void changeComposition(int idGamer, Composition comp) {
-		User user = userRepository.findById(idGamer);
+	public void changeComposition(User user, Composition comp) {
 		user.getActiveTeam().setComp(comp);
 		user.getActiveTeam().computeChemistry();
 	}
 
 	@Override
-	public void addPlayer(int idGamer, int idPlayer, int choicePlace, boolean isStarter) {	
+	public void addPlayer(User user, int idPlayer, int choicePlace, boolean isStarter) {
 		Player newplayer = playerRepository.findPlayerById(idPlayer);
-		User user = userRepository.findById(idGamer);
 		Team team = user.getActiveTeam();
 		team.addPlayer(newplayer,choicePlace,isStarter);
 	}
 
 	@Override
-	public void removePlayer(int idGamer, int choicePlace, boolean isStarter) {	
-		User user = userRepository.findById(idGamer);
+	public void removePlayer(User user, int choicePlace, boolean isStarter) {
 		Team team = user.getActiveTeam();
 		team.removePlayer(choicePlace,isStarter);
 	}
 
 	@Override
-	public void playGame(int idGamer) {
-		User homeplayer = userRepository.findById(idGamer);
+	public void playGame(User user) {
+		User homeplayer = user;
 		/*Look for a different  awayplayer with a valid team*/
-		User awayplayer = getUserForaGame(idGamer);	
+		User awayplayer = getUserForaGame(user);
 		Game game = new Game(homeplayer,awayplayer);
 		game.computeScore();
 	}
 	
-	public User getUserForaGame(int idGamer) {
+	public User getUserForaGame(User user) {
 		List<User> us = userRepository.findAll();
 		boolean validChoice = false;
 		User res = null;
 		Random rd = new Random();
 		while (!validChoice) {
 			res = us.get(rd.nextInt(us.size()));
-			if (res.getId() != idGamer && res.getActiveTeam().isPlayable()) {
+			if (res != user && res.getActiveTeam().isPlayable()) {
 				validChoice = true;
 			}
 		}
 		return res;
 	}
 	@Override
-	public void replacePlayer(int idGamer, int choiceStarter, int choiceSub) {
-		User user = userRepository.findById(idGamer);
+	public void replacePlayer(User user, int choiceStarter, int choiceSub) {
 		Team team = user.getActiveTeam();
 		team.replacePlayer(choiceStarter,choiceSub);
 	}

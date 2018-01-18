@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.persistence.*;
 
 import fr.n7.fut.model.players.Player;
+import fr.n7.fut.model.users.User;
 import org.hibernate.annotations.Cascade;
 
 @Entity
@@ -16,6 +17,9 @@ public class Team {
 	private int id;
 
 	private int collectif = 0;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 
 	@Enumerated(EnumType.STRING)
 	private Composition comp = Composition._433;

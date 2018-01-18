@@ -32,6 +32,7 @@ public class Player {
 
 	private int price;
 	private int globalNote;
+	@Enumerated(EnumType.STRING)
 	private Quality quality;
 	private String urlImage;
 	

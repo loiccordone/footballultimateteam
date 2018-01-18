@@ -15,11 +15,11 @@
 
 <!-- Navigation -->
 <nav th:replace="fragments/header :: header"></nav>
-
+<div class="container">
+    <div class="row">
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>#</th>
         <th>Nom</th>
         <th>Prénom</th>
         <th>Nation</th>
@@ -36,7 +36,6 @@
     </thead>
     <tbody>
     <tr th:each="player : ${listeJoueurs}">
-            <th scope="row">1</th>
             <td><span th:text="${player.nom}"></span></td>
             <td><span th:text="${player.prenom}"></span></td>
             <td><span th:text="${player.nation}"></span></td>
@@ -52,7 +51,9 @@
 
     </tr>
     </tbody>
-</table>
+    </table>
+    </div>
+</div>
 
 <!-- Footer -->
 <footer th:replace="fragments/footer :: footer">
