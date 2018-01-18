@@ -16,6 +16,45 @@
 <!-- Navigation -->
 <nav th:replace="fragments/header :: header"></nav>
 
+<div class="container">
+
+    <!-- Features Section -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="text-center">Résultat du match</h1>
+        </div>
+    </div>
+    <!-- ./row -->
+
+    <div class="row" style="height:30px;"></div>
+
+    <div class="row">
+        <div class="col-lg-5">
+            <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        </div>
+        <div class="col-lg-2 text-center">
+            <div class="row" style="height:100px;"></div>
+            <strong>VERSUS</strong>
+        </div>
+        <div class="col-lg-5">
+            <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <div class="row" style="height:15px;"></div>
+
+    <div class="row">
+        <div class="offset-lg-5 col-lg-2 text-center">
+            <a href="/resultat-match.html" class="btn btn-info" role="button">Voir le résultat</a>
+        </div>
+        <!-- ./row -->
+    </div>
+
+    <div class="row" style="height:15px;"></div>
+</div>
+<!-- /.container -->
+
 <!-- Footer -->
 <footer th:replace="fragments/footer :: footer">
 </footer>

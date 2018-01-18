@@ -16,6 +16,35 @@
 <!-- Navigation -->
 <nav th:replace="fragments/header :: header"></nav>
 
+<div class="container">
+    <!-- Features Section -->
+    <div class="row">
+        <div class="col-lg-6 text-center">
+            <h2>Résultat de la recherche</h2>
+            <ul class="list-group">
+                <li class="list-group-item">Pseudo Joueur</li>
+                <li class="list-group-item"> % victoire</li>
+                <li class="list-group-item">Nb parties jouées</li>
+            </ul>
+            <div class="row" style="height:15px;">
+            </div>
+            <div class="input-group col-md-12">
+                <input type="text" class="  search-query form-control" placeholder="Rechercher un joueur, un club, un autre participant... " />
+                <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button">
+                        <span class="glyphicon glyphicon-search"></span>
+                    </button>
+                </span>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <img class="img-fluid rounded" src="http://placehold.it/700x450" alt="">
+        </div>
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /.container -->
+
 <!-- Footer -->
 <footer th:replace="fragments/footer :: footer">
 </footer>
