@@ -3,6 +3,7 @@ package fr.n7.fut.model.users;
 import javax.persistence.*;
 
 import fr.n7.fut.model.games.Game;
+import fr.n7.fut.model.packs.Pack;
 import fr.n7.fut.model.players.Player;
 import fr.n7.fut.model.teams.Team;
 import org.hibernate.validator.constraints.Email;
@@ -19,6 +20,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_user")
     private int id;
+
+    @Column(name="pseudo")
+    @Length(min = 4, message="Le pseudo doit faire au moins 4 caractères")
+    @NotEmpty(message = "Le pseudo ne doit être pas vide")
+    private String pseudo;
 
     @Column(name = "email")
     @Email(message = "L'email n'est pas de forme valide")
@@ -37,14 +43,20 @@ public class User {
     private Role role = Role.USER;
 
     @OneToMany
-    @Column(name = "club_players")
+    @Column(name = "user_players")
     private List<Player> players;
 
     @OneToOne
     private Team activeTeam;
 
-    @OneToOne
-    private Record record;
+    @OneToMany
+    @Column(name = "user_packs")
+    private List<Pack> packs;
+
+    private int matchsJoues;
+    private int matchsGagnes;
+    private int butMarques;
+    private int butEncaisses;
     private int coins;
 
     public int getCoins() {
@@ -55,12 +67,36 @@ public class User {
 		this.coins = coins;
 	}
 
-	public Record getRecord() {
-        return record;
+    public int getMatchsJoues() {
+        return matchsJoues;
     }
 
-    public void setRecord(Record record) {
-        this.record = record;
+    public void setMatchsJoues(int matchsJoues) {
+        this.matchsJoues = matchsJoues;
+    }
+
+    public int getMatchsGagnes() {
+        return matchsGagnes;
+    }
+
+    public void setMatchsGagnes(int matchsGagnes) {
+        this.matchsGagnes = matchsGagnes;
+    }
+
+    public int getButMarques() {
+        return butMarques;
+    }
+
+    public void setButMarques(int butMarques) {
+        this.butMarques = butMarques;
+    }
+
+    public int getButEncaisses() {
+        return butEncaisses;
+    }
+
+    public void setButEncaisses(int butEncaisses) {
+        this.butEncaisses = butEncaisses;
     }
 
     public List<Player> getPlayers() {
@@ -118,8 +154,20 @@ public class User {
     public void setRole(Role role) {
         this.role = role;
     }
-    
-	public void majRecord(Game game) {
-		this.getRecord().majRecord(game);
-	}
+
+    public String getPseudo() {
+        return pseudo;
+    }
+
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public List<Pack> getPacks() {
+        return packs;
+    }
+
+    public void setPacks(List<Pack> packs) {
+        this.packs = packs;
+    }
 }
