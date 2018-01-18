@@ -35,6 +35,12 @@ public class Starter {
 
 	@OneToOne
 	private Player joueur;
+
+	public Starter (FieldRole fieldRole, Position position, Player joueur) {
+		this.fieldRole = fieldRole;
+		this.position = position;
+		this.joueur = joueur;
+	}
 	
 	public int getCollectif() {
 		return collectif;
@@ -60,51 +66,8 @@ public class Starter {
 	public void setJoueur(Player joueur) {
 		this.joueur = joueur;
 	}
-	public Starter (FieldRole fieldRole, Position position, Player joueur) {
-		this.fieldRole = fieldRole;
-		this.position = position;
-		this.joueur = joueur;
-	}
+
 	public boolean isReady () {
 		return this.getJoueur() != null;
 	}
-	public void computeChemistry (Map<Integer,Starter> starters, Composition comp, int position) {
-		int chemistry = computeChemistryPosition();
-		List<Integer> neighbors = Composition.getNeighbors(comp,position);
-		for (Integer i : neighbors) {
-			chemistry = chemistry - computeChemistryNeighbor(starters.get(i).getJoueur());
-		}
-		this.setCollectif(Math.max(0,Math.min(10,chemistry)));
-	}
-	
-	public int computeChemistryPosition () {
-		int res = 0;
-		if ((this.getJoueur().getFieldRole()).equals(this.getFieldRole())) {
-			res = 1;
-		}
-		if ((this.getJoueur().getPosition().equals(this.getPosition()))) {
-			res = 3;
-		}
-		return res;
-	}
-	
-	public int computeChemistryNeighbor(Player neighbor)  {
-		int res = 0;
-		if (this.getJoueur().getFootballTeam().getChampionnat().equals(neighbor.getFootballTeam().getChampionnat())) {
-			res++;
-			if (this.getJoueur().getFootballTeam().equals(neighbor.getFootballTeam())) {
-				res = res + 2;
-			}
-		}
-		if (this.getJoueur().getNation().equals(neighbor.getNation())) {
-			res = res + 2;
-		}
-		if (res == 0) {
-			res = -2;
-		}
-		return res;
-	}
-	
-	
-	
 }

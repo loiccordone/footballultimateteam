@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.persistence.*;
 
 import fr.n7.fut.model.players.Player;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table(name = "teams")
@@ -17,16 +18,18 @@ public class Team {
 	private int collectif = 0;
 
 	@Enumerated(EnumType.STRING)
-	private Composition comp;
+	private Composition comp = Composition._433;
 
 	@ElementCollection
 	@CollectionTable(name="team_starters")
 	@MapKeyColumn(name="team_starters_position")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private Map<Integer,Starter> starters;
 
 	@ElementCollection
 	@CollectionTable(name="team_subs")
 	@MapKeyColumn(name="team_subs_position")
+	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	private Map<Integer,Player> subs;
 
 	public int getCollectif() {

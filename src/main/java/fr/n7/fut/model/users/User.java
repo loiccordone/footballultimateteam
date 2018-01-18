@@ -42,14 +42,14 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role = Role.USER;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @Column(name = "user_players")
     private List<Player> players;
 
-    @OneToOne
+    @OneToOne(cascade=CascadeType.ALL)
     private Team activeTeam;
 
-    @OneToMany
+    @OneToMany(cascade=CascadeType.ALL)
     @Column(name = "user_packs")
     private List<Pack> packs;
 

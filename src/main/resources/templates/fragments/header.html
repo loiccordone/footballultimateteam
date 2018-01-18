@@ -22,12 +22,14 @@
                         <a class="nav-link" href="../achat-pack.html" th:href="@{achat-pack}">Acheter un pack</a>
                     </li>
                     <li class="nav-item" style="color:white;  padding: 0.5rem 0.2rem 0.5rem 2rem; ">
-                        <span th:utext="${user != null} ? '${user.coins} <img th:src=\'@{/images/coins.png}\' />'"></span>
+                        <span th:if="${user} != null"><span th:utext="${user.coins}"></span> <img src="/images/coins.png" th:src="@{/images/coins.png}" /></span>
                     </li>
-                    <span th:utext="${user != null} ?
-                            '<li class=\'nav-item\'><a class=\'nav-link\' href=\'../profil.html\' th:href=\'@{profil.html}\'>Mon dashboard</span></a></li>'
-                            : '<li class=\'nav-item\'><a class=\'nav-link\' href=\'../login.html\' th:href=\'@{login}\'>Se connecter</a></li>'">someValue</span>
-
+                    <span th:if="${user != null}">
+                        <li class="nav-item"><a class="nav-link" href="../profil.html" th:href="@{profil.html}">Mon dashboard</a></li>
+                    </span>
+                    <span th:if="${user == null}">
+                        <li class="nav-item"><a class="nav-link" href="../login.html" th:href="@{login.html}">Se connecter</a></li>
+                    </span>
                 </ul>
             </div>
         </div>

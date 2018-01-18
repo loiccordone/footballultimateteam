@@ -2,6 +2,7 @@ package fr.n7.fut.controller;
 
 import javax.validation.Valid;
 
+import fr.n7.fut.model.teams.Team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -131,6 +132,8 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
+
+            user.setActiveTeam(new Team());
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "L'utilisateur a été enregistré ! Connectez-vous !");
             modelAndView.addObject("user", new User());

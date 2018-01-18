@@ -9,12 +9,12 @@ public interface UserService {
 
     User findUserByEmail(String email);
     void saveUser(User user);
-    void buyPlayer(int idGamer, int idplayer);
-    void sellPlayer(int idGamer, int idplayer);
-    void openPack(int idGamer, PackFormat format, PackType type);
-    void changeComposition(int idGamer, Composition comp);
-    void addPlayer(int idGamer, int idPlayer, int choicePlace, boolean isStarter);
-    void replacePlayer(int idGamer, int choiceStarter, int choiceSub);
-    void removePlayer(int idGamer, int choicePlace, boolean isStarter);
-    void playGame(int idGamer);
+    void buyPlayer(User user, int idplayer);
+    void sellPlayer(User user, int idplayer);
+    void openPack(User user, PackFormat format, PackType type);
+    void changeComposition(User user, Composition comp);
+    void addPlayer(User user, int idPlayer, int choicePlace, boolean isStarter);
+    void replacePlayer(User user, int choiceStarter, int choiceSub);
+    void removePlayer(User user, int choicePlace, boolean isStarter);
+    void playGame(User user);
 }
