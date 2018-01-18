@@ -36,16 +36,62 @@
         <div class="col-lg-6">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Mes joueurs</a>
+                    <a class="nav-link active">Mes joueurs</a>
                 </li>
             </ul>
-            Ici
+            <div class="container">
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Nation</th>
+                            <th>Note globale</th>
+                            <th>Position</th>
+                            <th>Vendre</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="player : ${user.players}">
+                            <td><span th:text="${player.nom}"></span></td>
+                            <td><span th:text="${player.prenom}"></span></td>
+                            <td><span th:text="${player.nation}"></span></td>
+                            <td><span th:text="${player.globalNote}"></span></td>
+                            <td><span th:text="${player.fieldRole}"></span></td>
+                            <td><a href="#" class="btn btn-primary" role="button"><span th:utext="${player.price} / 2 "><img src="/images/coins.png" th:src="@{/images/coins.png}"/></span></a></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Mes packs</a>
+                    <a class="nav-link" href="#">Mes packs</a>
                 </li>
             </ul>
-            La
+            <div class="container">
+                <div class="row">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Qualité</th>
+                            <th>Type</th>
+                            <th>Ouvrir</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="pack : ${user.packs}">
+                            <td><span th:text="${pack.PackType}"></span></td>
+                            <td><span th:text="${pack.PackFormat}"></span></td>
+
+                                <form autocomplete="off" action="#" th:action="@{/profil}"
+                                      th:object="${player} method="post"> <a href="#" class="btn btn-primary" role="button">Ouvrir</a></form></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
         </div>
         <!-- /.row -->
