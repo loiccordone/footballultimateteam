@@ -131,5 +131,14 @@ public class MainController {
         return modelAndView;
     }
 
+    @RequestMapping(value={"/composition"}, method = RequestMethod.GET)
+    public ModelAndView composition(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("composition");
+        return modelAndView;
+        
+        
+    }
+
 
 }
