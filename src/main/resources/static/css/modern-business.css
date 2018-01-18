@@ -29,3 +29,9 @@ body {
 .portfolio-item {
   margin-bottom: 30px;
 }
+
+li#nohover.nav-item {
+  color: white !important;
+  display: block !important;
+  padding: 0.5rem 2rem !important;
+}
