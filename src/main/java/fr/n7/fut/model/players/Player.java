@@ -33,7 +33,14 @@ public class Player {
 	private int price;
 	private int globalNote;
 	private Quality quality;
+	private String urlImage;
 	
+	public String getUrlImage() {
+		return urlImage;
+	}
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
 	public Quality getQuality() {
 		return quality;
 	}
