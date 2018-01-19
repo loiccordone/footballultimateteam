@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import fr.n7.fut.model.packs.Pack;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -84,6 +85,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	}
 
 	@Override
+	public void buyPack(User user, Pack pack) {
+		/*Add the player to user's club*/
+		List<Pack> packs = user.getPacks();
+		packs.add(pack);
+		user.setPacks(packs);
+		/*Remove the price from user's coins*/
+		user.setCoins(user.getCoins()-pack.getPrice());
+	}
+
+	@Override
 	public void sellPlayer(User user, int idplayer) {
 		Player toSell = playerRepository.findPlayerById(idplayer);
 		User seller = user;
@@ -92,7 +103,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 		club.remove(toSell);
 		seller.setPlayers(club);
 		/*Add the price to user's coins*/
-		seller.setCoins(seller.getCoins()-toSell.getPrice());
+		seller.setCoins(seller.getCoins()+toSell.getPrice());
 		
 	}
 

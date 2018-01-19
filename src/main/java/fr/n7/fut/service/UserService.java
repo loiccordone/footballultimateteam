@@ -1,5 +1,6 @@
 package fr.n7.fut.service;
 
+import fr.n7.fut.model.packs.Pack;
 import fr.n7.fut.model.packs.PackFormat;
 import fr.n7.fut.model.packs.PackType;
 import fr.n7.fut.model.teams.Composition;
@@ -9,6 +10,7 @@ public interface UserService {
 
     User findUserByEmail(String email);
     void saveUser(User user);
+    void buyPack(User user, Pack pack);
     void buyPlayer(User user, int idplayer);
     void sellPlayer(User user, int idplayer);
     void openPack(User user, PackFormat format, PackType type);

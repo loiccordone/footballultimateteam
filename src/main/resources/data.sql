@@ -73,6 +73,8 @@ INSERT INTO players VALUES
 (46,"ATT",93,"FRA","GRIEZMANN","BU","Antoine",1200000,"OnFire","http://20.theladbiblegroup.com/s3/content/2b8f0c1159c310497cee2cc6542a110a.png",3,10,10),
 (47,"DEF",89,"ESP","CARVAJAL","DD","Dani",100000,"OnFire","http://www.fifacoins.co/upload/20160920/6360998426588531538059788.jpg",1,10,10),
 (48,"DEF",90,"BRA","MARCELO","DG","Da Silva",150000,"OnFire","https://www.fifaah.com/upload/20170909/6364056311861072835859919.png",1,10,10);
+--INSERT INTO users_packs VALUES (1,2),(1,5),(1,7);
+--INSERT INTO users_players VALUES (1,8),(1,1),(1,14),(1,15),(1,4),(1,5),(1,48),(1,47),(1,9),(1,10),(1,7),(1,6);
 
 
 

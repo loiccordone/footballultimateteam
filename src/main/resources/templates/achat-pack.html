@@ -18,6 +18,7 @@
 
     <!-- Page Content -->
     <div class="container">
+        <span th:utext="${message}"></span>
         <!-- Portfolio Section -->
         <h2>Achat de pack de joueurs</h2>
 
@@ -64,7 +65,7 @@
                         <p class="card-text">Pack comportant les joueurs de plus faible qualité à savoir les joueurs Or.</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="btn btn-primary">Acheter (12 j.) : 1500 crédits</a>
+                        <a th:href="@{/achat-pack(pf='NORMAL',pt='GOLD')}" class="btn btn-primary">Acheter (12 j.) : 1500 crédits</a>
                         <div class="row" style="height:5px;"></div>
                         <a href="#" class="btn btn-primary">Méga (24 j.) : 2900 crédits </a>
                     </div>

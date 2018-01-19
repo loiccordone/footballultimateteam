@@ -9,17 +9,21 @@ import fr.n7.fut.model.packs.PackFormat;
 import fr.n7.fut.model.packs.PackType;
 import fr.n7.fut.model.players.Player;
 import fr.n7.fut.model.players.Quality;
-import fr.n7.fut.repository.PacksRepository;
+import fr.n7.fut.repository.PackRepository;
 import fr.n7.fut.repository.PlayerRepository;
 import fr.n7.fut.service.PackService;
+import org.springframework.stereotype.Service;
 
+@Service("packService")
 public class PackServiceImpl implements PackService {
-	private PacksRepository packRep;
+	private PackRepository packRep;
 	private PlayerRepository playerRep;
 
 	@Override
 	public Pack generatePack(PackType type, PackFormat format) {
-		return packRep.findPackByPackFormatAndPackType(format, type);
+		Pack p = new Pack(type, format);
+		packRep.save(p);
+		return p;
 	}
 
 	@Override

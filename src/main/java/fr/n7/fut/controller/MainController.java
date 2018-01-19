@@ -2,8 +2,12 @@ package fr.n7.fut.controller;
 
 import javax.validation.Valid;
 
+import fr.n7.fut.model.packs.Pack;
+import fr.n7.fut.model.packs.PackFormat;
+import fr.n7.fut.model.packs.PackType;
 import fr.n7.fut.model.players.Player;
 import fr.n7.fut.model.teams.Team;
+import fr.n7.fut.service.PackService;
 import fr.n7.fut.service.PlayerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -28,6 +32,9 @@ public class MainController {
     @Autowired
     private PlayerService playerService;
 
+    @Autowired
+    private PackService packService;
+
     @RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
     public ModelAndView index(){
         ModelAndView modelAndView = new ModelAndView();
@@ -39,14 +46,32 @@ public class MainController {
     }
 
     @RequestMapping(value={"/achat-pack"}, method = RequestMethod.GET)
-    public ModelAndView achatpack(){
+    public ModelAndView achatpack(String pt, String pf){
         ModelAndView modelAndView = new ModelAndView();
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
+        if (pf != null && pt != null) {
+            PackType packType = PackType.valueOf(pt);
+            PackFormat packFormat = PackFormat.valueOf(pf);
+            Pack pack = packService.generatePack(packType, packFormat);
+            userService.buyPack(user,pack);
+            modelAndView.addObject("message","Le pack a été acheté !");
+        }
         modelAndView.addObject("user",user);
         modelAndView.setViewName("achat-pack");
         return modelAndView;
     }
+
+    /*@RequestMapping(value = "/achat-pack", method = RequestMethod.POST)
+    public ModelAndView achatpack(String pt, String ps) {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        userService.sellPlayer(user,pack.getId());
+        modelAndView.addObject("message", "Le pack a bien été acheté !");
+        modelAndView.setViewName("achat-pack");
+        return modelAndView;
+    }*/
 
     @RequestMapping(value={"/profil"}, method = RequestMethod.GET)
     public ModelAndView profil(){
@@ -54,6 +79,17 @@ public class MainController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(auth.getName());
         modelAndView.addObject("user",user);
+        modelAndView.setViewName("profil");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/profil", method = RequestMethod.POST)
+    public ModelAndView profil(Player player) {
+        ModelAndView modelAndView = new ModelAndView();
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        User user = userService.findUserByEmail(auth.getName());
+        userService.sellPlayer(user,player.getId());
+        modelAndView.addObject("message", "Le joueur a bien été vendu !");
         modelAndView.setViewName("profil");
         return modelAndView;
     }
@@ -151,7 +187,6 @@ public class MainController {
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("registration");
         } else {
-
             user.setActiveTeam(new Team());
             userService.saveUser(user);
             modelAndView.addObject("successMessage", "L'utilisateur a été enregistré ! Connectez-vous !");
@@ -191,8 +226,6 @@ public class MainController {
         modelAndView.addObject("user",user);
         modelAndView.setViewName("composition");
         return modelAndView;
-        
-        
     }
 
 

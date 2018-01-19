@@ -17,7 +17,23 @@ public class Pack {
 	private PackFormat packFormat;
 
 	private int price;
-	
+
+	public Pack() {
+	}
+
+	public Pack(PackType pt, PackFormat pf) {
+		this.packType = pt;
+		this.packFormat = pf;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public int getPrice() {
 		return price;
 	}
